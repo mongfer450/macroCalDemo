@@ -7,7 +7,7 @@ export default function FoodHistory({ items, onRemove }) {
         {items.map((food) => (
           <div
             key={food.id}
-            className="bg-white p-3 rounded-lg flex justify-between items-center group"
+            className="bg-gradient-to-r border border-black p-3 rounded-lg flex-inline items-center group"
           >
             <div>
               <span className="font-medium text-gray-800">{food.name}</span>
