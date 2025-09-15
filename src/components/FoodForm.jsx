@@ -2,7 +2,7 @@ import { Plus, ChevronDown, ChevronUp } from "lucide-react";
 import { useState } from "react";
 
 export default function FoodForm({ foodEntry, setFoodEntry, onAdd, onReset }) {
-  const [isVisible, setIsVisible] = useState(true); // toggle ทั้งคอมโพเนนต์
+  const [isVisible, setIsVisible] = useState(false); // toggle ทั้งคอมโพเนนต์
 
   // ถ้าไม่ visible → return ปุ่มกดโชว์ฟอร์มอย่างเดียว
   if (!isVisible) {
@@ -94,3 +94,4 @@ export default function FoodForm({ foodEntry, setFoodEntry, onAdd, onReset }) {
     </div>
   );
 }
+
