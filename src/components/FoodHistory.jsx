@@ -13,16 +13,17 @@ export default function FoodHistory({ items, onRemove }) {
               <span className="font-medium text-gray-800">{food.name}</span>
               <span className="text-sm text-gray-500 ml-2">({food.time})</span>
             </div>
-            <div className="flex items-center gap-3">
+            <div className="flex items-center justify-between">
               <div className="text-sm text-gray-600">
-                P: {food.proteins}g | C: {food.carbs}g | F: {food.fats}g
+                P: {food.proteins}g | C: {food.carbs}g | F: {food.fats} | kcal:{" "}
+                {food.proteins * 4 + food.carbs * 4 + food.fats * 9}
               </div>
               <button
+                className="!bg-gray-300  !mr-5 !px-3 hover:!bg-gray-800 !transition !duration-200"
                 onClick={() => onRemove(food.id)}
-                className="opacity-0 group-hover:opacity-100 transition-opacity bg-red-500 hover:bg-red-600 text-white px-2 py-1 rounded-full text-xs font-bold"
                 title="ลบอาหาร"
               >
-                ×
+                🗑️
               </button>
             </div>
           </div>
