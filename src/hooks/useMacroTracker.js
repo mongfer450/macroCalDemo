@@ -1,13 +1,27 @@
-import { useState, useMemo } from 'react';
-import { calculateCalories } from '../utils/calc';
+import useLocalStorage from "./useLocalStorage";
+import { useMemo } from "react";
+import { calculateCalories } from "../utils/calc";
 
 export default function useMacroTracker() {
-    const [dailyTarget, setDailyTarget] = useState({ proteins: 150, carbs: 300, fats: 67 });
-    const [consumed, setConsumed] = useState({ proteins: 0, carbs: 0, fats: 0 });
-    const [foodEntry, setFoodEntry] = useState({ name: '', proteins: '', carbs: '', fats: '' });
-    const [showSetup, setShowSetup] = useState(false);
-    const [tempTarget, setTempTarget] = useState(dailyTarget);
-    const [foodHistory, setFoodHistory] = useState([]);
+    const [dailyTarget, setDailyTarget] = useLocalStorage("dailyTarget", {
+        proteins: 150,
+        carbs: 300,
+        fats: 67,
+    });
+    const [consumed, setConsumed] = useLocalStorage("consumed", {
+        proteins: 0,
+        carbs: 0,
+        fats: 0,
+    });
+    const [foodEntry, setFoodEntry] = useLocalStorage("foodEntry", {
+        name: "",
+        proteins: "",
+        carbs: "",
+        fats: "",
+    });
+    const [showSetup, setShowSetup] = useLocalStorage(false);
+    const [tempTarget, setTempTarget] = useLocalStorage(dailyTarget);
+    const [foodHistory, setFoodHistory] = useLocalStorage("foodHistory", []);
 
     const targetCalories = useMemo(
         () => calculateCalories(dailyTarget.proteins, dailyTarget.carbs, dailyTarget.fats),
